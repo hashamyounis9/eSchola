@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .card-container {
+      margin-top: 20px;
+    }
+
+    .section-title {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">eSchola</a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile.html">Profile</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-2 bg-light">
+
+        <h3 class="list-group-item list-group-item-action active">Dashboard</h3>
+        <ul class="list-group ml-auto">
+          <li class="list-group-item list-group-item-action" data-toggle="modal" data-target="#createClassModal"><a
+              href="#">Create
+              a New Class</a></li>
+          <li class="list-group-item list-group-item-action" data-toggle="modal" data-target="#enrollClassModal"><a
+              href="#">Enroll
+              in a new Class</a></li>
+          
+          <li class="list-group-item list-group-item-action"><a href="/enrolled_classes.html">Enrolled Classes</a></li>
+          <li class="list-group-item list-group-item-action"><a href="/hosted_classes.html">Hosted Classes</a></li>
+          <li class="list-group-item list-group-item-action"><a href="/progress.html">Progress</a></li>
+        </ul>
+      </div>
+
+
+      
+      <div class="col-md-10">
+        <div class="container">
+
+          <div class="row card-container">
+           
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Create a Class</h5>
+                  <p class="card-text">Create a new class for students to enroll in.</p>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#createClassModal">Create
+                    Class</button>
+                </div>
+              </div>
+            </div>
+
+           
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Enroll in a Class</h5>
+                  <p class="card-text">Join an existing class with a code.</p>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#enrollClassModal">Enroll
+                    in Class</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+       
+          <div class="section-title">
+            <h3>Created Classes</h3>
+            <div class="row">
+              <div class="col-md-12" id="createdClassesList">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Class Name</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="3">No classes are created yet.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+         
+          <div class="section-title">
+            <h3>Enrolled Classes</h3>
+            <div class="row">
+              <div class="col-md-12" id="enrolledClassesList">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Class Code</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="2">No classes enrolled.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  
+  <div class="modal fade" id="createClassModal" tabindex="-1" role="dialog" aria-labelledby="createClassModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createClassModalLabel">Create a New Class</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <form id="createClassForm">
+            <div class="form-group">
+              <label for="className">Class Name</label>
+              <input type="text" class="form-control" id="className" required>
+              <label for="classCode">Class Code</label>
+              <input type="number" class="form-control" id="classCode" required>
+              <label for="classPassword">Class Password</label>
+              <input type="password" class="form-control" id="classPassword" required>
+            </div>
+            <div class="form-group">
+              <label for="classDescription">Class Description</label>
+              <textarea class="form-control" id="classDescription" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Class</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal fade" id="enrollClassModal" tabindex="-1" role="dialog" aria-labelledby="enrollClassModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="enrollClassModalLabel">Enroll in a Class</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <form id="enrollClassForm">
+            <div class="form-group">
+              <label for="classCd">Class Code</label>
+              <input type="text" class="form-control" id="classCd" required>
+              <label for="classPswd">Class Password</label>
+              <input type="number" class="form-control" id="classPswd" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Request to Enroll</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+
+    // Function to handle form submission for creating a new class
+    $('#createClassForm').submit(function (event) {
+      event.preventDefault();
+      
+      var className = $('#className').val();
+      var classDescription = $('#classDescription').val();
+      
+      $('#createdClassesList tbody').append('<tr><td colspan="2">' + className + '</td><td>' + classDescription + '</td></tr>');
+     
+      $('#createClassModal').modal('hide');
+     
+      $('#className').val('');
+      $('#classDescription').val('');
+     
+      $('#createNewClassLink').removeClass('active');
+    });
+
+    // Function to handle form submission for enrolling in a class
+    $('#enrollClassForm').submit(function (event) {
+      event.preventDefault();
+      
+      var classCode = $('#classCd').val();
+      
+      $('#enrolledClassesList tbody').append('<tr><td>' + classCode + '</td><td>Pending</td></tr>');
+      
+      $('#enrollClassModal').modal('hide');
+      
+      $('#classCode').val('');
+    
+      $('#enrollClassLink').removeClass('active');
+    });
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics</title>
+   
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-container {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-center" href="/">eSchola</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile.html">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+          
+            <div class="col-md-2 bg-light">
+                <h3 class="list-group-item list-group-item-action active text-center">Enrolled Classes</h3>
+                <ul class="list-group ml-auto">
+                    <li class="list-group-item list-group-item-action"><a href="/mathematics.html">Mathematics</a></li>
+                    <li class="list-group-item list-group-item-action"><a href="#">Physics</a></li>
+                    <li class="list-group-item list-group-item-action"><a href="#">Literature</a></li>
+                    
+                </ul>
+            </div>
+
+           
+            <div class="col-md-10">
+                <div class="container">
+                    <div class="row card-container">
+                        <div class="col-md-12">
+                            <h2 class="text-center mt-4">Mathematics</h2>
+                            
+                            <div class="section-title">
+                                <h3 class="text-center">Grades</h3>
+                                <table class="table table-bordered">
+                                    <h4 class="text-center"> Assignments </h4>
+                                    <thead>
+                                        <tr>
+                                            <th>Assignment</th>
+                                            <th>Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Assignment 1</td>
+                                            <td>90%</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>Assignment 2</td>
+                                            <td>80%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Assignment 3</td>
+                                            <td>70%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+
+                                <table class="table table-bordered">
+                                    <h4 class="text-center"> Quizes </h4>
+                                    <thead>
+                                        <tr>
+                                            <th>Quiz</th>
+                                            <th>Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Quiz 1</td>
+                                            <td>90%</td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>Quiz 2</td>
+                                            <td>80%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quiz 3</td>
+                                            <td>70%</td>
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                          
+                            <div class="section-title">
+                                <h3>Live Assignments/Quizzes</h3>
+                                <div class="list-group" id="liveAssignments">
+                                    <a href="#" class="list-group-item list-group-item-action" data-toggle="modal"
+                                        data-target="#assignmentModal">Assignment 4</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Quiz 4</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="modal fade" id="assignmentModal" tabindex="-1" role="dialog" aria-labelledby="assignmentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assignmentModalLabel">Assignment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Description: This is the description of the assignment.</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="fileInput">Attach File</label>
+                            <input type="file" class="form-control-file" id="fileInput">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitAssignment()">Turn In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function submitAssignment() {
+            
+            var success = Math.random() < 0.5; 
+            if (success) {
+                // Show success message
+                $('#assignmentModal').modal('hide');
+                $('#liveAssignments a[data-target="#assignmentModal"]').addClass('disabled');
+                $('#liveAssignments a[data-target="#assignmentModal"]').attr('aria-disabled', 'true');
+            } else {
+                // Show failure message
+                $('#assignmentModal').modal('hide');
+                alert('Submission failed. Please try again.');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+1. Signup/ login validations to [backend]
+2. Styling [Suggested combination if you can override.. #386776 bg --fg-->white]
+3. Demo for an enrolled and hosted class have been hardcoded to show how it might look like.
+4. Was having problem with creating class and inserting that into the table first row was 
+problematic for both of the tables. please look into that.
+5. In enrolled classes and hosted classes both would require dynamic url redirection[you'd know better]
+and having the visual of how it would be like.
+6. In hosted classes, the creating assignments and quizes is done, the viewing enrolled students and receiving the request for
+enrollment were missed out. 
+7. Progress Panel got 0 progress.
+
+GOOOD LUCK! 

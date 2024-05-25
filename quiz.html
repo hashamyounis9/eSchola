@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create Quiz</h1>
+        <form id="createQuizForm">
+            <div id="questions">
+                <div class="form-group">
+                    <label for="question1">Question 1</label>
+                    <input type="text" class="form-control question" required>
+                    <div class="form-group">
+                        <label for="questionType1">Question Type</label>
+                        <select class="form-control question-type">
+                            <option value="descriptive">Descriptive</option>
+                            <option value="multiple-choice">Multiple Choice</option>
+                            <option value="multi-select">Multi-Select</option>
+                        </select>
+                    </div>
+                    <div class="options">
+                        <div class="form-group">
+
+                        </div>
+                        
+                    </div>
+                    <button type="button" class="btn btn-primary add-option">Add Option</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary add-question">Add Question</button>
+            <button type="submit" class="btn btn-primary">Create Quiz</button>
+        </form>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var questionCount = 1;
+
+           
+            $('.add-question').click(function () {
+                questionCount++;
+                var questionHTML = '<div class="form-group">' +
+                    '<label for="question' + questionCount + '">Question ' + questionCount + '</label>' +
+                    '<input type="text" class="form-control question" required>' +
+                    '<div class="form-group">' +
+                    '<label for="questionType' + questionCount + '">Question Type</label>' +
+                    '<select class="form-control question-type">' +
+                    '<option value="descriptive">Descriptive</option>' +
+                    '<option value="multiple-choice">Multiple Choice</option>' +
+                    '<option value="multi-select">Multi-Select</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '<div class="options">' +
+                    '</div>' +
+                    '<button type="button" class="btn btn-primary add-option">Add Option</button>' +
+                    '</div>';
+                $('#questions').append(questionHTML);
+            });
+
+
+            
+            $(document).on('click', '.add-option', function () {
+                var optionsContainer = $(this).prev('.options');
+                var optionCount = optionsContainer.children('.form-group').length;
+                var optionHTML = '<div class="form-group">' +
+                    '<input type="text" class="form-control option" placeholder="Option ' + optionCount + '" required>' +
+                    '<div class="form-check">' +
+                    '<input type="checkbox" class="form-check-input correct-option" value="' + optionCount + '" name="correctOption' + questionCount + '">' +
+                    '<label class="form-check-label" for="correctOption' + optionCount + '">Correct</label>' +
+                    '</div>' +
+                    '</div>';
+                optionsContainer.append(optionHTML);
+            });
+
+            // Form submission
+            $('#createQuizForm').submit(function (event) {
+                event.preventDefault();
+                var quiz = [];
+                $('.form-group').each(function () {
+                    var question = $(this).find('.question').val();
+                    var questionType = $(this).find('.question-type').val();
+                    var options = [];
+                    var correctOptions = [];
+                    $(this).find('.option').each(function () {
+                        var option = $(this).val();
+                        options.push(option);
+                    });
+                    if (questionType === 'descriptive') {
+                        correctOptions = null;
+                    } else {
+                        $(this).find('.correct-option:checked').each(function () {
+                            var correctOption = parseInt($(this).val());
+                            correctOptions.push(correctOption);
+                        });
+                    }
+                    var questionData = {
+                        question: question,
+                        type: questionType,
+                        options: options,
+                        correctOptions: correctOptions
+                    };
+                    quiz.push(questionData);
+                });
+
+                
+                var confirmation = confirm("Are you sure you want to create the quiz?");
+                if (confirmation) 
+                {
+                    console.log(quiz); 
+
+                    window.location.href = "hosted_classes.html";
+
+                    
+                    $('#createQuizForm').trigger('reset');
+                    $('#questions').empty();
+                    questionCount = 1;
+                } else {}
+            });
+
+        });
+    </script>
+</body>
+
+</html>
