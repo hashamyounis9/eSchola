@@ -1,118 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="globe.png">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="globe.png" />
     <title>eSchola</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <style>
-        .form-container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
+      .form-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="/"><img src="logo.png" alt="eschola" style="width: 200px;"></a>
-        <!-- <a class="navbar-brand" href="/">eSchola</a> -->
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/profile.html">Contact Support</a>
-            </li>
-          </ul>
+      <!-- <a href="/"><img src="logo.png" alt="eschola" style="width: 200px" /></a> -->
+      <a href="http://localhost/eSchola/index.html" style="text-decoration: none;"><h1>e$chola</h1></a>
+      <style>
+        a:hover {
+            color: green;
+        }
+      </style>
+      <!-- <a class="navbar-brand" href="/">eSchola</a> -->
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile.html">Contact Support</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container"> 
+      <div class="form-container">
+        <div class="d-flex justify-content-between mb-4">
+          <button id="login-btn" class="btn btn-primary">Login</button>
+          <button id="signup-btn" class="btn btn-secondary">Sign Up</button>
         </div>
-      </nav>
 
-    
-    <div class="container">
-        <div class="form-container">
-            <div class="d-flex justify-content-between mb-4">
-                <button id="login-btn" class="btn btn-primary">Login</button>
-                <button id="signup-btn" class="btn btn-secondary">Sign Up</button>
+        <div id="login-form">
+          <h3 class="text-center">Login</h3>
+          <form action="login.php" method="post">
+            <div class="form-group">
+              <label for="login-email">Email address</label>
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="login-email"
+                placeholder="Enter email"
+                required
+              />
             </div>
-
-            
-            <div id="login-form">
-                <h3 class="text-center">Login</h3>
-                <form action="/dashboard.html">
-                    <div class="form-group">
-                        <label for="login-email">Email address</label>
-                        <input type="email" class="form-control" id="login-email" placeholder="Enter email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" class="form-control" id="login-password" placeholder="Password" required>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                </form>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="login-password"
+                placeholder="Password"
+                required
+              />
             </div>
-
-            
-            <div id="signup-form" style="display: none;">
-                <h3 class="text-center">Sign Up</h3>
-                <form action="/dashboard.html">
-                    <div class="form-group">
-                        <label for="signup-FullName">Full Name</label>
-                        <input type="text" class="form-control" id="signup-FullName" placeholder="Enter Full Name"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-email">Email address</label>
-                        <input type="email" class="form-control" id="signup-email" placeholder="Enter email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-password">Password</label>
-                        <input type="password" class="form-control" id="signup-password" placeholder="Password"
-                            required>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
-                </form>
-            </div>
+            <br />
+            <button type="submit" class="btn btn-primary btn-block">
+              Login
+            </button>
+          </form>
         </div>
+
+        <div id="signup-form" style="display: none">
+          <h3 class="text-center">Sign Up</h3>
+          <form action="signup.php" method="post">
+            <div class="form-group">
+              <label for="signup-FullName">Full Name</label>
+              <input
+                name="name"
+                type="text"
+                class="form-control"
+                id="signup-FullName"
+                placeholder="Enter Full Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email address</label>
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="signup-email"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="signup-password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <br />
+            <button type="submit" class="btn btn-block btn-primary">
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-    
+
     <script>
-        document.getElementById('login-btn').addEventListener('click', function () {
-            document.getElementById('login-form').style.display = 'block';
-            document.getElementById('signup-form').style.display = 'none';
-            this.classList.add('btn-primary');
-            this.classList.remove('btn-secondary');
-            document.getElementById('signup-btn').classList.remove('btn-primary');
-            document.getElementById('signup-btn').classList.add('btn-secondary');
+      document
+        .getElementById("login-btn")
+        .addEventListener("click", function () {
+          document.getElementById("login-form").style.display = "block";
+          document.getElementById("signup-form").style.display = "none";
+          this.classList.add("btn-primary");
+          this.classList.remove("btn-secondary");
+          document.getElementById("signup-btn").classList.remove("btn-primary");
+          document.getElementById("signup-btn").classList.add("btn-secondary");
         });
 
-        document.getElementById('signup-btn').addEventListener('click', function () {
-            document.getElementById('signup-form').style.display = 'block';
-            document.getElementById('login-form').style.display = 'none';
-            this.classList.add('btn-primary');
-            this.classList.remove('btn-secondary');
-            document.getElementById('login-btn').classList.remove('btn-primary');
-            document.getElementById('login-btn').classList.add('btn-secondary');
-            document.getElementById('signupbtn').classList.add('btn-primary');
+      document
+        .getElementById("signup-btn")
+        .addEventListener("click", function () {
+          document.getElementById("signup-form").style.display = "block";
+          document.getElementById("login-form").style.display = "none";
+          this.classList.add("btn-primary");
+          this.classList.remove("btn-secondary");
+          document.getElementById("login-btn").classList.remove("btn-primary");
+          document.getElementById("login-btn").classList.add("btn-secondary");
+          document.getElementById("signupbtn").classList.add("btn-primary");
         });
+    </script>
 
-        </script>
-        
-        
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

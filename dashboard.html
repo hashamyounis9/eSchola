@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Logout</a>
+          <a class="nav-link" href="/eSchola/">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile.html">Profile</a>
@@ -39,21 +39,14 @@
   <div class="container-fluid">
     <div class="row">
       
-      <div class="col-md-2 bg-light">
-
-        <h3 class="list-group-item list-group-item-action active">Dashboard</h3>
-        <ul class="list-group ml-auto">
-          <li class="list-group-item list-group-item-action" data-toggle="modal" data-target="#createClassModal"><a
-              href="#">Create
-              a New Class</a></li>
-          <li class="list-group-item list-group-item-action" data-toggle="modal" data-target="#enrollClassModal"><a
-              href="#">Enroll
-              in a new Class</a></li>
-          
-          <li class="list-group-item list-group-item-action"><a href="/enrolled_classes.html">Enrolled Classes</a></li>
-          <li class="list-group-item list-group-item-action"><a href="/hosted_classes.html">Hosted Classes</a></li>
-          <li class="list-group-item list-group-item-action"><a href="/progress.html">Progress</a></li>
-        </ul>
+      <div class="list-group" style="margin: 20px;">
+        <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>
+          Dashboard
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">Create Class</button>
+        <button type="button" class="list-group-item list-group-item-action">Enroll in class</button>
+        <button type="button" class="list-group-item list-group-item-action">Hosted Classes</button>
+        <button type="button" class="list-group-item list-group-item-action">Progress</button>
       </div>
 
 
@@ -96,12 +89,12 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th colspan="2">Class Name</th>
+                      <th>Class Name</th>
                       <th>Description</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr id="tempRow">
                       <td colspan="3">No classes are created yet.</td>
                     </tr>
                   </tbody>
@@ -118,13 +111,13 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Class Code</th>
+                      <th>Course Code</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td colspan="2">No classes enrolled.</td>
+                    <tr id="tempRowEnrolled">
+                      <td colspan="3">No classes enrolled.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -157,8 +150,8 @@
             <div class="form-group">
               <label for="className">Class Name</label>
               <input type="text" class="form-control" id="className" required>
-              <label for="classCode">Class Code</label>
-              <input type="number" class="form-control" id="classCode" required>
+              <label for="classCode">Course Code</label>
+              <input type="text" class="form-control" id="classCode" required>
               <label for="classPassword">Class Password</label>
               <input type="password" class="form-control" id="classPassword" required>
             </div>
@@ -188,7 +181,7 @@
           
           <form id="enrollClassForm">
             <div class="form-group">
-              <label for="classCd">Class Code</label>
+              <label for="classCd">Course Code</label>
               <input type="text" class="form-control" id="classCd" required>
               <label for="classPswd">Class Password</label>
               <input type="number" class="form-control" id="classPswd" required>
@@ -211,6 +204,9 @@
     $('#createClassForm').submit(function (event) {
       event.preventDefault();
       
+      const tempRowCreatedClass = document.getElementById("tempRow");
+      tempRowCreatedClass.remove();
+
       var className = $('#className').val();
       var classDescription = $('#classDescription').val();
       
@@ -226,6 +222,10 @@
 
     // Function to handle form submission for enrolling in a class
     $('#enrollClassForm').submit(function (event) {
+
+      const tempRowEnrolledClass = document.getElementById("tempRowEnrolled")
+      tempRowEnrolledClass.remove();
+
       event.preventDefault();
       
       var classCode = $('#classCd').val();
