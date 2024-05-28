@@ -13,11 +13,6 @@ if (!$connection) {
     echo "Connected to database!<br>";
     $result = mysqli_query($connection, $insert_query);
     echo "Data inserted to database...<br>";
-    // if (mysqli_num_rows($result) > 0) {
-    //     echo "Login Success!<br>";
-    // } else {
-    //     echo "Invalide email or password<br>";
-    // }
 }
 
 echo "Inside the code<br>";

@@ -23,8 +23,8 @@ if (!dbConnect()) { // this function is from dbConnect.php
 
     if ($row = mysqli_fetch_assoc($result)) {
         if ($password == $row['password']) {
-            $_SESSION["name"] = $row['name'];
-            header("Location: dashboard.html");
+            $_SESSION["id"] = $row['id'];
+            header("Location: dashboard.php");
             exit();
         } else {
             $_SESSION["error"] = $row["Wrong Password"];
