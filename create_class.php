@@ -4,10 +4,10 @@
 
 session_start();
 
-$class_name = $_GET['className'];
-$course_code = $_GET['courseCode'];
-$class_password = $_GET['classPassword'];
-$class_description = $_GET['classDescription'];
+$class_name = $_POST['className'];
+$course_code = $_POST['courseCode'];
+$class_password = $_POST['classPassword'];
+$class_description = $_POST['classDescription'];
 
 echo "$class_name<br>";
 echo "$course_code<br>";

@@ -43,14 +43,18 @@ session_start();
   </div>
   <div id="content">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-      <a class="navbar-brand" href="/eSchola/dashboard.php" style="color: white">
+      <a class="navbar-brand" href="/eSchola/dashboard.php" style="color: white;">
         <h1>eSchola</h1>
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="/eSchola/" style="color: white"><strong>
-                <h5>Logout</h5>
+                <form action="logout.php">
+                  <label>
+                    <h5 style="cursor: pointer;">Logout</h5>
+                  </label>
+                </form>
               </strong></a>
           </li>
 
@@ -65,27 +69,37 @@ session_start();
 
     <div class="container-fluid">
       <div class="row">
-        <div class="list-group" style="margin-left: 15px; margin-top: 15px">
+      <div class="list-group" style="margin-left: 15px; margin-top: 15px; ;">
           <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>
-            <h3 class="list-group-item list-group-item-action active text-center">
-              Hosted Classes
-            </h3>
+            <h3 class="list-group-item list-group-item-action active text-center">Dashboard</h3>
           </button>
-          <a href="dashboard.php">
-            <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
-              data-target="#createClassModal">
-              Dashboard
-            </button>
-          </a>
+          <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
+            data-target="#createClassModal">
+            <h5>Create class</h5>
+          </button>
           <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
             data-target="#enrollClassModal">
-            Hosted Classes
+            <h5>Enroll in class</h5>
           </button>
-          <button type="button" class="list-group-item list-group-item-action">
-            Create New Class
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'hosted_classes.php'">
+            <h5>Hosted Classes</h5>
           </button>
-          <button type="button" class="list-group-item list-group-item-action">
-            Progress
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'enrolled_classes.php'">
+            <h5>Enrolled Classes</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'class_details.html'">
+            <h5>Class Details</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'quiz.html'">
+            <h5>Create Quiz</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'activities.html'">
+            <h5>Classe Ativity</h5>
           </button>
         </div>
         <div class="col-md-10">
@@ -95,7 +109,7 @@ session_start();
                 <h1 class="text-center mt-4">Hosted Classes</h1>
 
                 <div class="section-title">
-                  <h3>List of Hosted Classes</h3>
+                  <!-- <h3>List of Hosted Classes</h3> -->
                   <table class="table table-bordered">
                     <thead>
                       <tr>
@@ -120,6 +134,11 @@ session_start();
                             $class_code = $row["course_code"];
                             $class_name = $row["class_name"];
                             $password = $row["class_password"];
+                            echo "<style>
+                                    #tempRow {
+                                      display: none;
+                                    }
+                                  </style>";
                             echo "<tr>
                               <td>$class_name</td>
                               <td>Unknown</td>

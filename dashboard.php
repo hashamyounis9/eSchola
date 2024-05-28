@@ -50,10 +50,19 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/eSchola/" style="color: white;"><strong>Logout</a>
-          </li></strong>
+            <a class="nav-link" href="/eSchola/" style="color: white"><strong>
+                <form action="logout.php">
+                  <label>
+                    <h5 style="cursor: pointer;">Logout</h5>
+                  </label>
+                </form>
+              </strong></a>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="/profile.html" style="color: white;"><strong>Profile</strong></a>
+            <a class="nav-link" href="profile.html" style="color: white">
+              <h5>Profile</h5>
+            </a>
           </li>
         </ul>
       </div>
@@ -66,58 +75,36 @@ session_start();
           </button>
           <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
             data-target="#createClassModal">
-            Create Class
+            <h5>Create class</h5>
           </button>
           <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
             data-target="#enrollClassModal">
-            Enroll in class
+            <h5>Enroll in class</h5>
           </button>
-          <button type="button" class="list-group-item list-group-item-action">
-            <a href="hosted_classes.php" style="text-decoration: none; color: black"><strong>Hosted Classes</strong></a>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'hosted_classes.php'">
+            <h5>Hosted Classes</h5>
           </button>
-          <button type="button" class="list-group-item list-group-item-action">
-            Progress
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'enrolled_classes.php'">
+            <h5>Enrolled Classes</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'class_details.html'">
+            <h5>Class Details</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'quiz.html'">
+            <h5>Create Quiz</h5>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action"
+            onclick="window.location.href = 'activities.html'">
+            <h5>Classe Ativity</h5>
           </button>
         </div>
         <div class="col-md-10">
           <div class="container">
-          <h1 class="text-center mt-4">Dashboard</h1>
-            <!-- <div class="row card-container"> -->
-            <!-- <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Create a Class</h5>
-                      <p class="card-text">
-                        Create a new class for students to enroll in.
-                      </p>
-                      <button
-                        class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#createClassModal"
-                      >
-                        Create Class
-                      </button>
-                    </div>
-                  </div>
-                </div> -->
-            <!-- <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Enroll in a Class</h5>
-                      <p class="card-text">
-                        Join an existing class with a code.
-                      </p>
-                      <button
-                        class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#enrollClassModal"
-                      >
-                        Enroll in Class
-                      </button>
-                    </div>
-                  </div>
-                </div> -->
-            <!-- </div> -->
+            <h1 class="text-center mt-4">Dashboard</h1>
             <div class="section-title">
               <h3>Created Classes</h3>
               <div class="row">
@@ -145,6 +132,11 @@ session_start();
                             $class_code = $row["course_code"];
                             $class_name = $row["class_name"];
                             $class_description = $row["class_description"];
+                            echo "<style>
+                                    #tempRow {
+                                      display: none;
+                                    }
+                                  </style>";
                             echo "<tr>
                                       <td>$class_code</td>
                                       <td>$class_name</td>
@@ -182,15 +174,21 @@ session_start();
                         header("Location: error.php");
                         exit();
                       } else {
-                        $select_query = "SELECT * FROM created_class WHERE id=0";
+                        $id = $_SESSION["id"];
+                        $select_query = "SELECT * FROM enrolled_class WHERE id = $id";
                         $result = mysqli_query($connection, $select_query);
                         if (mysqli_num_rows($result) > 0) {
                           while ($row = mysqli_fetch_array($result)) {
-                            // $email = $row["email"];
+                            $course_code = $row["course_code"];
                             // $password = $row['password'];
+                            echo "<style>
+                                    #tempRow {
+                                      display: none;
+                                    }
+                                  </style>";
                             echo "<tr>
-                                      <td>email</td>
-                                      <td>password</td>
+                                      <td>$course_code</td>
+                                      <td>Pending</td>
                                     </tr>";
                           }
                         } else {
@@ -224,7 +222,7 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <form id="createClassForm" action="create_class.php" method="get">
+          <form id="createClassForm" action="create_class.php" method="post">
             <div class="form-group">
               <label for="className">Class Name</label>
               <input type="text" class="form-control" id="className" name="className" required />
@@ -260,15 +258,15 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <form id="enrollClassForm">
+          <form id="enrollClassForm" action="enroll_class.php" method="post">
             <div class="form-group">
               <label for="classCd">Course Code</label>
-              <input type="text" class="form-control" id="classCd" required />
+              <input type="text" name="courseCode" class="form-control" id="classCd" required />
               <label for="classPswd">Class Password</label>
-              <input type="text" class="form-control" id="classPswd" required />
+              <input type="text" class="form-control" name="classPassword" id="classPswd" required />
             </div>
-            <button id="enrollButton" type="submit" class="btn btn-primary">
-              Request to Enroll
+            <input class="btn btn-primary" type="submit" name="submit" id="press" value="Request to Enroll">
+
             </button>
             <button id="loadingButton" class="btn btn-primary" type="button" disabled>
               <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
@@ -294,88 +292,88 @@ session_start();
       }, Math.floor(Math.random() * 2001));
     });
 
-    $("#createClassForm").submit(function (event) {
+    // $("#createClassForm").submit(function (event) {
 
-      // Prevent default form submission behavior
-      event.preventDefault();
+    //   // Prevent default form submission behavior
+    //   event.preventDefault();
 
-      // Get form field values
-      const className = $("#className").val();
-      const classDescription = $("#classDescription").val();
+    //   // Get form field values
+    //   const className = $("#className").val();
+    //   const classDescription = $("#classDescription").val();
 
-      // Create temporary row element (optional, if needed for UI feedback)
-      // const tempRowCreatedClass = document.getElementById("tempRow");
+    //   // Create temporary row element (optional, if needed for UI feedback)
+    //   // const tempRowCreatedClass = document.getElementById("tempRow");
 
-      // Update buttons (hide "Create Class", show "Loading...")
-      $("#press").hide();
-      $("#load").show();
+    //   // Update buttons (hide "Create Class", show "Loading...")
+    //   $("#press").hide();
+    //   $("#load").show();
 
-      // Simulate loading (replace with actual backend interaction)
-      setTimeout(function () {
-        // Update the created classes list (replace with your backend logic)
-        $("#createdClassesList tbody").append(
-          '<tr><td>' +
-          className +
-          "</td><td>" +
-          classDescription +
-          "</td></tr>"
-        );
+    //   // Simulate loading (replace with actual backend interaction)
+    //   setTimeout(function () {
+    //     // Update the created classes list (replace with your backend logic)
+    //     $("#createdClassesList tbody").append(
+    //       '<tr><td>' +
+    //       className +
+    //       "</td><td>" +
+    //       classDescription +
+    //       "</td></tr>"
+    //     );
 
-        // Hide the modal after 2 seconds
-        $("#createClassModal").modal("hide");
+    //     // Hide the modal after 2 seconds
+    //     $("#createClassModal").modal("hide");
 
-        // const tempRowCreatedClass = document.getElementById("tempRow");
-        // tempRowCreatedClass.remove();
+    //     // const tempRowCreatedClass = document.getElementById("tempRow");
+    //     // tempRowCreatedClass.remove();
 
-        // Clear form fields
-        $("#className").val("");
-        $("#classDescription").val("");
+    //     // Clear form fields
+    //     $("#className").val("");
+    //     $("#classDescription").val("");
 
-        // Reset button states (optional)
-        $("#press").show();
-        $("#load").hide();
-        document.getElementById("createClassForm").reset();
-      }, 1000);
+    //     // Reset button states (optional)
+    //     $("#press").show();
+    //     $("#load").hide();
+    //     document.getElementById("createClassForm").reset();
+    //   }, 1000);
 
-      // window.location.href = 'create_class.php';
-    });
+    //   // window.location.href = 'create_class.php';
+    // });
 
     // Function to handle form submission for enrolling in a class
-    $("#enrollClassForm").submit(function (event) {
+    // $("#enrollClassForm").submit(function (event) {
 
-      // Prevent default form submission behavior
-      event.preventDefault();
+    //   // Prevent default form submission behavior
+    //   event.preventDefault();
 
-      // Get the class code from the form
-      const classCode = $("#classCd").val();
+    //   // Get the class code from the form
+    //   const classCode = $("#classCd").val();
 
-      // Update buttons (hide "Enroll Class", show "Loading...")
-      $("#enrollButton").hide(); // Assuming the button ID is "enrollButton"
-      $("#loadingButton").show(); // Assuming the button ID is "loadingButton"
+    //   // Update buttons (hide "Enroll Class", show "Loading...")
+    //   $("#enrollButton").hide(); // Assuming the button ID is "enrollButton"
+    //   $("#loadingButton").show(); // Assuming the button ID is "loadingButton"
 
 
-      // const tempRowCreatedClass = document.getElementById("tempRowEnrolled");
-      // tempRowCreatedClass.remove();
+    //   // const tempRowCreatedClass = document.getElementById("tempRowEnrolled");
+    //   // tempRowCreatedClass.remove();
 
-      // Simulate enrollment (replace with actual backend interaction)
-      setTimeout(function () {
-        // Update the enrolled classes list
-        $("#enrolledClassesList tbody").append(
-          "<tr><td>" + classCode + "</td><td>Pending</td></tr>"
-        );
+    //   // Simulate enrollment (replace with actual backend interaction)
+    //   setTimeout(function () {
+    //     // Update the enrolled classes list
+    //     $("#enrolledClassesList tbody").append(
+    //       "<tr><td>" + classCode + "</td><td>Pending</td></tr>"
+    //     );
 
-        // Hide the modal after 2 seconds
-        $("#enrollClassModal").modal("hide");
+    //     // Hide the modal after 2 seconds
+    //     $("#enrollClassModal").modal("hide");
 
-        // Clear the class code field
-        $("#classCode").val("");
+    //     // Clear the class code field
+    //     $("#classCode").val("");
 
-        // Reset button states
-        $("#enrollButton").show();
-        $("#loadingButton").hide();
-        document.getElementById("enrollClassForm").reset();
-      }, 1000); // Wait 2 seconds before hiding the modal
-    });
+    //     // Reset button states
+    //     $("#enrollButton").show();
+    //     $("#loadingButton").hide();
+    //     document.getElementById("enrollClassForm").reset();
+    //   }, 1000); // Wait 2 seconds before hiding the modal
+    // });
   </script>
 </body>
 
