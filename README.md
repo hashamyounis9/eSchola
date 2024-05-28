@@ -61,10 +61,10 @@ Edit the `dbConnect.php` file to provide the following details:
 ![Assessment Tools](screenshots/hosted_classes.png)
 
 ### Create Quiz
-![Assessment Tools](screenshots/CREATE_QUIZ.png)
+![Assessment Tools](screenshots/create_quiz.png)
 
 ### Interactive Activities
-![Interactive Activities](screenshots/OTHER_ACTIVITIES.png)
+![Interactive Activities](screenshots/other_activities.png)
 
 ## Additional Notes
 
