@@ -32,9 +32,9 @@ Grant appropriate permissions to the application's files and folders to allow th
 
 ### Configuration
 
-Edit the `config.php` file to provide the following details:
+Edit the `dbConnect.php` file to provide the following details:
 - Database connection information (host, username, password, database name)
-- Optionally, you may customize other settings within `config.php` as needed.
+- Optionally, you may customize other settings within `dbConnect.php` as needed.
 
 ### Running the Application
 
@@ -42,6 +42,12 @@ Edit the `config.php` file to provide the following details:
 2. Access eSchola in your web browser by visiting `http://localhost/your_installation_directory/` (replace `your_installation_directory` with the actual directory name where you copied the files).
 
 ## Screenshots
+
+### Login
+![Dashboard](screenshots/login.png)
+
+### Sigup
+![Dashboard](screenshots/signup.png)
 
 ### Dashboard
 ![Dashboard](screenshots/dashboard.png)
