@@ -32,7 +32,7 @@ if (!dbConnect()) { // this function is from dbConnect.php
             exit();
         }
     } else {
-        $_SESSION["error"] = "User does not exist in database i.e. Username not found";
+        $_SESSION["error"] = "User does not exist i.e. Username not found";
         header("Location: error.php");
     }
 }

@@ -60,7 +60,7 @@ session_start();
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="profile.html" style="color: white">
+            <a class="nav-link" href="profile.php" style="color: white">
               <h5>Profile</h5>
             </a>
           </li>
@@ -109,8 +109,8 @@ session_start();
               <h3>Created Classes</h3>
               <div class="row">
                 <div class="col-md-12" id="createdClassesList">
-                  <table class="table table-bordered">
-                    <thead>
+                  <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
                       <tr>
                         <th>Course Code</th>
                         <th>Class Name</th>
@@ -160,8 +160,8 @@ session_start();
               <h3>Enrolled Classes</h3>
               <div class="row">
                 <div class="col-md-12" id="enrolledClassesList">
-                  <table class="table table-bordered">
-                    <thead>
+                  <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
                       <tr>
                         <th>Course Code</th>
                         <th>Status</th>

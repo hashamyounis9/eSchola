@@ -59,7 +59,7 @@ session_start();
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="profile.html" style="color: white">
+            <a class="nav-link" href="profile.php" style="color: white">
               <h5>Profile</h5>
             </a>
           </li>
@@ -110,8 +110,8 @@ session_start();
 
                 <div class="section-title">
                   <!-- <h3>List of Hosted Classes</h3> -->
-                  <table class="table table-bordered">
-                    <thead>
+                  <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
                       <tr>
                         <th>Class Name</th>
                         <th>No. of Students</th>
@@ -141,7 +141,7 @@ session_start();
                                   </style>";
                             echo "<tr>
                               <td>$class_name</td>
-                              <td>Unknown</td>
+                              <td>0</td>
                               <td>$class_code</td>
                               <td>$password</td>
                             </tr>";
