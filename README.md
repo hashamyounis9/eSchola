@@ -44,25 +44,27 @@ Edit the `dbConnect.php` file to provide the following details:
 ## Screenshots
 
 ### Login
-![Dashboard](screenshots/login.png)
+![Login page](screenshots/login.png)
 
 ### Sigup
-![Dashboard](screenshots/signup.png)
+![Signup page](screenshots/signup.png)
 
 ### Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
 ### Class Management
-![Class Management](screenshots/class_management.png)
+![Create Class](screenshots/create_class.png)
 
-### Content Delivery
-![Content Delivery](screenshots/content_delivery.png)
+![Enrol in class](screenshots/enrol_in_class.png)
 
-### Assessment Tools
-![Assessment Tools](screenshots/assessment_tools.png)
+### Host Classes
+![Assessment Tools](screenshots/hosted_classes.png)
+
+### Create Quiz
+![Assessment Tools](screenshots/create_quiz.png)
 
 ### Interactive Activities
-![Interactive Activities](screenshots/interactive_activities.png)
+![Interactive Activities](screenshots/other_activities.png)
 
 ## Additional Notes
 
