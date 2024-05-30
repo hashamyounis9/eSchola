@@ -1,4 +1,5 @@
-# ![Logo](screenshots/eSchola.png) A Virtual Classroom Platform
+# ![Logo](screenshots/eSchola.png) 
+# A Virtual Classroom Platform
 
 ## Introduction
 
