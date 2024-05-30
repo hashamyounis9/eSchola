@@ -37,6 +37,8 @@ session_start();
 </head>
 
 <body style="background-color: aliceblue">
+
+
   <div class="spinner-wrapper" id="spinner">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem" role="status">
       <span class="visually-hidden"></span>
@@ -236,11 +238,12 @@ session_start();
               <textarea class="form-control" id="classDescription" rows="1" name="classDescription" required></textarea>
             </div>
             <input class="btn btn-primary" type="submit" name="submit" id="press" value="Create Class">
+            <button id="load" class="btn btn-primary" type="button" disabled>
+              <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+              <span role="status">Creating Class</span>
+            </button>
           </form>
-          <button id="load" class="btn btn-primary" type="button" disabled>
-            <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
-            <span role="status">Creating Class</span>
-          </button>
+
         </div>
       </div>
     </div>
