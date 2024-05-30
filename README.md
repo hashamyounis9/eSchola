@@ -38,8 +38,8 @@ Edit the `dbConnect.php` file to provide the following details:
 
 ### Running the Application
 
-1. Copy the eSchola application files and folders to your web server's document root directory (usually `/var/www/html` or similar).
-2. Access eSchola in your web browser by visiting `http://localhost/your_installation_directory/` (replace `your_installation_directory` with the actual directory name where you copied the files).
+1. Copy the eSchola application files and folders to your web server's document root directory (usually `http://localhost/` or similar).
+2. Access eSchola in your web browser by visiting `http://localhost/eSchola/`.
 
 ## Screenshots
 
@@ -60,11 +60,17 @@ Edit the `dbConnect.php` file to provide the following details:
 ### Host Classes
 ![Assessment Tools](screenshots/hosted_classes.png)
 
+### Enrolled Classes
+![Assessment Tools](screenshots/enrolled_classes.png)
+
 ### Create Quiz
 ![Assessment Tools](screenshots/create_quiz.png)
 
 ### Interactive Activities
 ![Interactive Activities](screenshots/other_activities.png)
+
+### Profile
+![Interactive Activities](screenshots/profile.png)
 
 ## Additional Notes
 
