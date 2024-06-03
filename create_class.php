@@ -9,13 +9,13 @@ $course_code = $_POST['courseCode'];
 $class_password = $_POST['classPassword'];
 $class_description = $_POST['classDescription'];
 
-echo "$class_name<br>";
-echo "$course_code<br>";
-echo "$class_password<br>";
-echo "$class_description<br>";
-echo "Session: ";
-echo $_SESSION["id"];
-echo "<br>";
+// echo "$class_name<br>";
+// echo "$course_code<br>";
+// echo "$class_password<br>";
+// echo "$class_description<br>";
+// echo "Session: ";
+// echo $_SESSION["id"];
+// echo "<br>";
 
 // echo "<script>alert('$class_name $course_code $class_password $class_description')</script>";
 

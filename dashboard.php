@@ -1,7 +1,9 @@
 <?php
+echo"";
 session_start();
+$message = "Starting to execute dashboard.PHP";
+echo "<script>console.log('$message');</script>";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -289,10 +291,12 @@ session_start();
     document.getElementById("loadingButton").style.display = "none";
 
     document.addEventListener("DOMContentLoaded", function () {
+      console.log("Started spinning...");
       setTimeout(function () {
         document.getElementById("spinner").style.display = "none";
         document.getElementById("content").style.display = "block";
       }, Math.floor(Math.random() * 2001));
+      console.log("Returning from loading...");
     });
 
     // $("#createClassForm").submit(function (event) {
